@@ -1,5 +1,5 @@
 
-CONCIERGE_IMAGE=dragondropcloud/cloud-concierge:latest
+CONCIERGE_IMAGE=dragondropcloud/cloud-concierge-dev:latest
 
 volume-main:
 	docker volume create concierge_main
@@ -8,6 +8,7 @@ run:
 	docker run --name concierge \
 		--env-file ./frank.env \
 		-v concierge_main:/main \
+		-v $(HOME)/.aws:/main/credentials/aws:ro \
 		-w /main \
 		$(CONCIERGE_IMAGE)
 
@@ -40,3 +41,8 @@ infracost-key:
 
 infracost:
 	infracost breakdown --path terraform/persistent-storage
+
+#### AWS
+
+aws-configure:
+	aws configure
