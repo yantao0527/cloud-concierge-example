@@ -1,5 +1,5 @@
 terraform {
-  required_version = "~> 1.2.6"
+  required_version = "~> 1.5.5"
 
   required_providers {
     aws = {
@@ -9,7 +9,7 @@ terraform {
   }
 
   cloud {
-    organization = var.org
+    organization = "frank-cloud"
 
     workspaces {
       name = "aws-networking-dev"
