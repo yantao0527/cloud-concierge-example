@@ -7,5 +7,5 @@ variable "org" {
 variable "region" {
   type        = string
   description = "aws region"
-  default     = "us-east-2"
+  default     = "us-east-1"
 }

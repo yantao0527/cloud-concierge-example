@@ -46,3 +46,18 @@ infracost:
 
 aws-configure:
 	aws configure
+
+#### Terraform
+
+storage-apply:
+	@echo "(cd terraform/persistent-storage; make apply)"
+
+storage-destroy:
+	@echo "(cd terraform/persistent-storage; make destroy)"
+
+networking-apply:
+	@echo "(cd terraform/networking; make apply)"
+
+networking-destroy:
+	@echo "(cd terraform/networking; make destroy)"
+
