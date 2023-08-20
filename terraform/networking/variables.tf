@@ -4,21 +4,35 @@ variable "org" {
   default     = "frank-cloud"
 }
 
+# variable "subnet_id_one" {
+#   description = "The ID of the first subnet to which the secrets and IAM definitions are deployed."
+#   type        = string
+#   default     = "subnet-0f4719c7fe46fb68a"
+# }
+
+# variable "subnet_id_two" {
+#   description = "The ID of the second subnet to which the secrets and IAM definitions are deployed."
+#   type        = string
+#   default     = "subnet-07624cc5b8fba4220"
+# }
+
+variable "prefix" {
+  type        = string
+  description = "Prefix added to names of all resources"
+  default     = "dragon"
+}
+
 variable "region" {
   type        = string
   description = "aws region"
   default     = "us-east-1"
 }
 
-# variable "subnet_id_one" {
-#   description = "The ID of the first subnet to which the secrets and IAM definitions are deployed."
-#   type        = string
-# }
-
-# variable "subnet_id_two" {
-#   description = "The ID of the second subnet to which the secrets and IAM definitions are deployed."
-#   type        = string
-# }
+variable "zone_1" {
+  type        = string
+  description = "aws zone"
+  default     = "us-east-1b"
+}
 
 variable "vpc_cidr" {
   type        = string
@@ -26,8 +40,9 @@ variable "vpc_cidr" {
   default     = "192.168.0.0/16"
 }
 
-variable "prefix" {
+variable "vsw_1_cidr" {
   type        = string
-  description = "Prefix added to names of all resources"
-  default     = "dragon"
+  description = "aws subnet CIDR"
+  default     = "192.168.11.0/24"
 }
+

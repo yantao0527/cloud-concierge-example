@@ -12,20 +12,33 @@ run:
 		-w /main \
 		$(CONCIERGE_IMAGE)
 
+run2:
+	docker run --name concierge \
+		--env-file ./frank.env \
+		-v $(PWD)/volume_main:/main \
+		-v $(HOME)/.aws:/main/credentials/aws:ro \
+		-w /main \
+		$(CONCIERGE_IMAGE)
+
 rm:
 	docker rm concierge
+
+rm2:
+	docker rm concierge
+	sudo rm -rf volume_main
 
 logs:
 	docker logs concierge
 
-copy-json:
-	docker cp concierge:/main/mappings .
-
-run2:
+check-main:
 	docker run -it --rm \
 		-v concierge_main:/main \
 		-w /main \
 		busybox:latest sh
+
+check-main2:
+	sudo chown -R $(USER) volume_main
+	chmod +x volume_main/*
 
 #### Infracost
 
@@ -40,7 +53,7 @@ infracost-key:
 	@echo infracost configure set api_key ico-*******************************
 
 infracost:
-	infracost breakdown --path terraform/persistent-storage
+	infracost breakdown --path terraform
 
 #### AWS
 
