@@ -1,5 +1,7 @@
 
-CONCIERGE_IMAGE=dragondropcloud/cloud-concierge-dev:latest
+#CONCIERGE_IMAGE=dragondropcloud/cloud-concierge:latest
+#CONCIERGE_IMAGE=dragondropcloud/cloud-concierge-dev:latest
+CONCIERGE_IMAGE=cloud-concierge-local:latest
 
 volume-main:
 	docker volume create concierge_main
@@ -12,7 +14,8 @@ run:
 		-w /main \
 		$(CONCIERGE_IMAGE)
 
-run2:
+run2: rm-volume-local
+	-docker rm concierge
 	docker run --name concierge \
 		--env-file ./frank.env \
 		-v $(PWD)/volume_main:/main \
@@ -25,6 +28,9 @@ rm:
 
 rm2:
 	docker rm concierge
+	sudo rm -rf volume_main
+
+rm-volume-local:
 	sudo rm -rf volume_main
 
 logs:
