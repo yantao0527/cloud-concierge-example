@@ -1,4 +1,6 @@
 version: 0.1
 projects:
-  - path: .
-    name: dev
+  - path: terraform/networking
+    name: aws-networking-dev
+  - path: terraform/persistent-storage
+    name: aws-persistent-storage-dev

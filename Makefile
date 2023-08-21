@@ -59,7 +59,7 @@ infracost-key:
 	@echo infracost configure set api_key ico-*******************************
 
 infracost:
-	infracost breakdown --path terraform
+	infracost breakdown --config-file=infracost.yml
 
 #### AWS
 
