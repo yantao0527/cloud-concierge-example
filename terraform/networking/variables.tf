@@ -4,17 +4,17 @@ variable "org" {
   default     = "frank-cloud"
 }
 
-variable "subnet_id_one" {
-  description = "The ID of the first subnet to which the secrets and IAM definitions are deployed."
-  type        = string
-  default     = "subnet-0f4719c7fe46fb68a"
-}
+# variable "subnet_id_one" {
+#   description = "The ID of the first subnet to which the secrets and IAM definitions are deployed."
+#   type        = string
+#   default     = "subnet-0f4719c7fe46fb68a"
+# }
 
-variable "subnet_id_two" {
-  description = "The ID of the second subnet to which the secrets and IAM definitions are deployed."
-  type        = string
-  default     = "subnet-07624cc5b8fba4220"
-}
+# variable "subnet_id_two" {
+#   description = "The ID of the second subnet to which the secrets and IAM definitions are deployed."
+#   type        = string
+#   default     = "subnet-07624cc5b8fba4220"
+# }
 
 variable "prefix" {
   type        = string
