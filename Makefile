@@ -1,10 +1,13 @@
 
-#CONCIERGE_IMAGE=dragondropcloud/cloud-concierge:latest
+CONCIERGE_IMAGE=dragondropcloud/cloud-concierge:latest
 #CONCIERGE_IMAGE=dragondropcloud/cloud-concierge-dev:latest
-CONCIERGE_IMAGE=cloud-concierge-local:latest
+#CONCIERGE_IMAGE=cloud-concierge-local:latest
 
 volume-main:
 	docker volume create concierge_main
+
+pull:
+	docker pull $(CONCIERGE_IMAGE)
 
 run:
 	docker run --name concierge \
@@ -45,6 +48,13 @@ check-main:
 check-main2:
 	sudo chown -R $(USER) volume_main
 	chmod +x volume_main/*
+
+mask-secrets:
+	cat frank.env | \
+		sed -e 's/^CLOUDCONCIERGE_TERRAFORMCLOUDTOKEN=.*/CLOUDCONCIERGE_TERRAFORMCLOUDTOKEN=/' |\
+		sed -e 's/^CLOUDCONCIERGE_VCSTOKEN=.*/CLOUDCONCIERGE_VCSTOKEN=/' |\
+		sed -e 's/^CLOUDCONCIERGE_INFRACOSTAPITOKEN=.*/CLOUDCONCIERGE_INFRACOSTAPITOKEN=/' |\
+		sed -e 's/^CLOUDCONCIERGE_ORGTOKEN=.*/CLOUDCONCIERGE_ORGTOKEN=/' > demo.env
 
 #### Infracost
 
